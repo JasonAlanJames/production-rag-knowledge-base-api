@@ -1,148 +1,121 @@
-# AI Output Evaluation Benchmark Suite
+# Production RAG Knowledge Base API
 
-AI Output Evaluation Benchmark Suite is a production-style FastAPI benchmark suite for evaluating AI outputs across RAG systems, structured extraction APIs, and agentic workflows.
+A production-style Retrieval-Augmented Generation API built with **FastAPI**, **LangChain**, **ChromaDB**, and **Docker**.
 
-This project demonstrates how AI outputs can be evaluated for reliability, groundedness, schema validity, required field accuracy, approval-gate compliance, auditability, and action safety.
+This project demonstrates how to build, test, containerize, document, and deploy a source-grounded AI knowledge base API. It is designed as a portfolio-ready AI engineering project that shows practical experience with production RAG architecture, API development, vector retrieval, automated testing, Docker deployment, and GitHub Actions CI.
 
-## Purpose
+The API supports document ingestion, semantic search, source-grounded answer generation, automated testing, Docker deployment, and professional project documentation with screenshots.
 
-Most AI demos show that a model can generate a response. Production AI systems need a deeper question answered:
+---
 
-> How do we know the AI output is correct, safe, structured, and reliable?
+## Project Purpose
 
-This project provides a repeatable benchmark suite for testing common enterprise AI use cases, including RAG answers, structured JSON extraction, and agentic workflow decisions.
+The purpose of this project is to demonstrate the core engineering skills required to build production-ready RAG systems.
 
-## Features
+This project shows how to:
 
-- FastAPI evaluation service
-- RAG answer evaluation
-- Structured JSON extraction evaluation
-- Agent decision evaluation
-- Batch evaluation endpoint
-- Rule-based scoring system
-- Repeatable sample evaluation datasets
+- Build an AI API using FastAPI
+- Ingest internal knowledge base documents
+- Store and retrieve vectorized document chunks
+- Search internal knowledge using semantic retrieval
+- Generate source-grounded answers from retrieved context
+- Validate API behavior with pytest
+- Containerize the application with Docker
+- Run automated CI checks with GitHub Actions
+- Document a working AI engineering project with screenshots
+- Present a clean, portfolio-ready GitHub repository
+
+---
+
+## Key Features
+
+- FastAPI backend service
+- Swagger/OpenAPI documentation
+- RAG document ingestion endpoint
+- Semantic knowledge base search endpoint
+- Source-grounded question answering endpoint
+- ChromaDB vector database support
+- LangChain-based RAG structure
+- Local development environment support
+- Dockerized deployment workflow
+- GitHub Actions CI pipeline
 - pytest test coverage
-- Docker support
-- GitHub Actions CI
 - Environment-based configuration
 - Production-style project structure
-- Swagger/OpenAPI documentation
+- Professional README documentation with working screenshots
 
-## Screenshots
-
-### Swagger API Docs
-
-![Swagger API Docs](docs/screenshots/swagger-docs.png)
-
-### Health Check Endpoint
-
-![Health Check Endpoint](docs/screenshots/health-endpoint.png)
-
-### RAG Evaluation
-
-![RAG Evaluation](docs/screenshots/rag-evaluation.png)
-
-### Structured JSON Extraction Evaluation
-
-![Structured JSON Extraction Evaluation](docs/screenshots/json-extraction-evaluation.png)
-
-### Agent Decision Evaluation
-
-![Agent Decision Evaluation](docs/screenshots/agent-decision-evaluation.png)
-
-### Dockerized Application Running
-
-![Docker Running](docs/screenshots/docker-running.png)
-
-### GitHub Actions CI Passing
-
-![GitHub Actions CI](docs/screenshots/github-actions-ci.png)
+---
 
 ## Tech Stack
 
-- Python
-- FastAPI
-- Pydantic
-- pytest
-- Uvicorn
-- Docker
-- GitHub Actions
-- JSON-based evaluation datasets
+| Technology | Purpose |
+|---|---|
+| Python | Core backend language |
+| FastAPI | API framework |
+| LangChain | RAG workflow structure |
+| ChromaDB | Vector database |
+| Pydantic | Request and response validation |
+| Uvicorn | ASGI server |
+| pytest | Automated testing |
+| Docker | Containerized deployment |
+| GitHub Actions | Continuous integration |
+
+---
 
 ## API Endpoints
 
 | Method | Endpoint | Description |
 |---|---|---|
-| GET | `/health` | Health check endpoint |
-| POST | `/evaluate/rag-answer` | Evaluate a RAG-generated answer |
-| POST | `/evaluate/json-extraction` | Evaluate structured JSON extraction output |
-| POST | `/evaluate/agent-decision` | Evaluate an agent workflow decision |
-| POST | `/evaluate/batch` | Run multiple evaluations in one request |
+| GET | `/health` | Confirms the API is running |
+| POST | `/ingest` | Ingests documents into the vector database |
+| POST | `/search` | Searches the knowledge base for relevant content |
+| POST | `/ask` | Generates a source-grounded answer from retrieved context |
 
-## Evaluation Categories
-
-### RAG Evaluation
-
-The RAG evaluator checks whether an AI-generated answer:
-
-- Includes expected answer terms
-- Uses retrieved context
-- Includes source references
-- Appears grounded in the provided context
-- Avoids unsupported or incomplete responses
-
-### Structured Extraction Evaluation
-
-The structured extraction evaluator checks whether model output:
-
-- Is valid dictionary/JSON structure
-- Includes required fields
-- Matches expected extracted values
-- Avoids missing, malformed, or incorrect fields
-
-### Agent Decision Evaluation
-
-The agent evaluator checks whether an AI agent:
-
-- Selects the expected action
-- Requires approval when appropriate
-- Provides a decision reason
-- Includes an audit log
-- Avoids unauthorized actions
+---
 
 ## Project Structure
 
 ```text
-ai-output-evaluation-benchmark-suite/
-├── app/
-│   ├── evaluators/
-│   │   ├── agent_evaluator.py
-│   │   ├── extraction_evaluator.py
-│   │   └── rag_evaluator.py
-│   ├── scoring/
-│   │   ├── report_generator.py
-│   │   └── scoring_rules.py
-│   ├── config.py
-│   ├── main.py
-│   └── schemas.py
-├── datasets/
-│   ├── agent_eval_cases.json
-│   ├── extraction_eval_cases.json
-│   └── rag_eval_cases.json
-├── docs/
-│   └── screenshots/
-├── reports/
-│   └── sample_evaluation_report.md
-├── tests/
-│   ├── test_agent_evaluator.py
-│   ├── test_extraction_evaluator.py
-│   └── test_rag_evaluator.py
+production-rag-knowledge-base-api/
 ├── .github/
 │   └── workflows/
 │       └── ci.yml
+├── app/
+│   ├── rag/
+│   │   ├── __init__.py
+│   │   ├── answer_generator.py
+│   │   ├── embeddings.py
+│   │   ├── ingest.py
+│   │   └── retriever.py
+│   ├── __init__.py
+│   ├── config.py
+│   ├── main.py
+│   └── schemas.py
+├── data/
+│   └── sample_docs/
+│       ├── ai_agent_innovation_academy.txt
+│       ├── jppm_solutions.txt
+│       └── production_rag_systems.txt
+├── docs/
+│   └── screenshots/
+│       ├── ask-endpoint.png
+│       ├── docker-running.png
+│       ├── github-actions-ci.png
+│       ├── health-endpoint.png
+│       ├── ingest-endpoint.png
+│       ├── pytest-passing.png
+│       ├── search-endpoint.png
+│       └── swagger-docs.png
+├── reports/
+├── tests/
+│   ├── test_api.py
+│   └── test_retriever.py
+├── .env.example
+├── .gitignore
 ├── Dockerfile
 ├── pytest.ini
-├── requirements.txt
+├── README.md
+└── requirements.txt
 └── README.md
 ```
 
