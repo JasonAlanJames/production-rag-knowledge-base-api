@@ -38,18 +38,6 @@ This project provides a repeatable benchmark suite for testing common enterprise
 
 ![Health Check Endpoint](docs/screenshots/health-endpoint.png)
 
-### RAG Evaluation
-
-![RAG Evaluation](docs/screenshots/rag-evaluation.png)
-
-### Structured JSON Extraction Evaluation
-
-![Structured JSON Extraction Evaluation](docs/screenshots/json-extraction-evaluation.png)
-
-### Agent Decision Evaluation
-
-![Agent Decision Evaluation](docs/screenshots/agent-decision-evaluation.png)
-
 ### Dockerized Application Running
 
 ![Docker Running](docs/screenshots/docker-running.png)
